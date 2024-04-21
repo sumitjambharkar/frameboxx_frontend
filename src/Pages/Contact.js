@@ -1,6 +1,37 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 
 const Contact = () => {
+  const [data, setData] = useState({
+    name:"",
+    email:"",
+    phone:"",
+    message:"",
+    course:""
+  })
+
+  const handleChange = (e) => {
+    setData({...data,[e.target.name]:e.target.value})
+  }
+
+  const send = async () => {
+    try {
+      const response = await axios.post('https://frameboxx-backend.onrender.com/submit-form', {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        message: data.message,
+        course: data.course
+      });
+
+      console.log("Response:", response.data);
+      // Handle success if needed
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error if needed
+    }
+  };
+
   return (
     <div>
        <div>
@@ -9,12 +40,14 @@ const Contact = () => {
         </div>
       <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
-          <form action="https://formbold.com/s/FORM_ID" method="POST">
+          <div>
             <div class="formbold-input-flex">
               <div>
                 <input
+                  value={data.name}
+                  onChange={handleChange}
                   type="text"
-                  name="firstname"
+                  name="name"
                   id="firstname"
                   class="formbold-form-input"
                 />
@@ -24,16 +57,16 @@ const Contact = () => {
                 </label>
               </div>
               <div>
-                <select name="cars" id="cars" class="formbold-form-input">
-                <option>Choose Courses</option>
-                  <option >Degree in Animation & VFX</option>
-                  <option >Animation Courses</option>
-                  <option >Game Design/Game Art Courses</option>
-                  <option >Web Design & Development Courses</option>
-                  <option >Visual Effects (VFX) Courses</option>
-                  <option >UI & UX Course,Motion Graphic Courses</option>
-                  <option > Graphic Designing Courses</option>
-                </select>
+              <select value={data.course} onChange={handleChange} name="course" id="course" className="formbold-form-input">
+        <option value="Choose Courses">Choose Courses</option>
+        <option value="Degree in Animation & VFX">Degree in Animation & VFX</option>
+        <option value="Animation Courses">Animation Courses</option>
+        <option value="Game Design/Game Art Courses">Game Design/Game Art Courses</option>
+        <option value="Web Design & Development Courses">Web Design & Development Courses</option>
+        <option value="Visual Effects (VFX) Courses">Visual Effects (VFX) Courses</option>
+        <option value="UI & UX Course,Motion Graphic Courses">UI & UX Course,Motion Graphic Courses</option>
+        <option value="Graphic Designing Courses">Graphic Designing Courses</option>
+      </select>
                 <label for="lastname" class="formbold-form-label">
                   Choose Courses
                 </label>
@@ -43,6 +76,8 @@ const Contact = () => {
             <div class="formbold-input-flex">
               <div>
                 <input
+                   value={data.email}
+                   onChange={handleChange}
                   type="email"
                   name="email"
                   id="email"
@@ -55,6 +90,8 @@ const Contact = () => {
               </div>
               <div>
                 <input
+                 value={data.phone}
+                 onChange={handleChange}
                   type="text"
                   name="phone"
                   id="phone"
@@ -69,6 +106,8 @@ const Contact = () => {
 
             <div class="formbold-textarea">
               <textarea
+               value={data.message}
+               onChange={handleChange}
                 rows="6"
                 name="message"
                 id="message"
@@ -80,8 +119,8 @@ const Contact = () => {
               </label>
             </div>
 
-            <button class="button-81">Submit</button>
-          </form>
+            <button onClick={send} class="button-81">Submit</button>
+          </div>
         </div>
       </div>
     </div>
