@@ -221,6 +221,12 @@ details{
 }
 
 @media only screen and (max-width: 600px) {
+  .formbold-main-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 22px;
+ }
   .formbold-input-flex {
     display: flex;
     gap: 0px;
