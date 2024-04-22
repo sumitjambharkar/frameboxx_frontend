@@ -221,6 +221,17 @@ details{
 }
 
 @media only screen and (max-width: 600px) {
+  .formbold-input-flex {
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+    margin-bottom: 22px;
+  }
+  .formbold-input-flex > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
   .tog{
     display: block;
   }
