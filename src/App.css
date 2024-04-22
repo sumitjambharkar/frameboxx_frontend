@@ -72,7 +72,8 @@ details{
     font-size: 14px;
     line-height: 24px;
     display: block;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
+    margin-top: 12px;
   }
   .formbold-form-input:focus + .formbold-form-label {
     color: green;
