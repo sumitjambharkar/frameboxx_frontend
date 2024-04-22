@@ -140,7 +140,6 @@ details{
 
 .navbar{
   width: 100%;
-  height: 100px;
   align-items: center;
   justify-content: space-around;
   background-color:#ffcc01 ;
@@ -221,6 +220,10 @@ details{
 }
 
 @media only screen and (max-width: 600px) {
+
+  .logg {
+    width: 170px;
+   }
   .formbold-main-wrapper {
     align-items: center;
     display: flex;
@@ -277,7 +280,7 @@ details{
 
 }
 .logg{
-  width: 250px;
+  width: 143px;
 }
 .logo{
   margin-right: 30px;
